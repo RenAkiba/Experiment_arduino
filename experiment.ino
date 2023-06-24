@@ -28,6 +28,7 @@ const int SPEAKER = 12;
 int sleep_count = 0;
 
 #define BEATTIME 200 //音を出している時間(msec)
+#define M 440
 #define S 50
 
 /*---------------------------------------------------------------------*/
@@ -54,7 +55,7 @@ void loop(){
   if(IRin_1 == 1){
     MSin_1 = analogRead(MS1);//値をとる
 
-    if(MSin_1 > 470){//閾値以上なら
+    if(MSin_1 > M){//閾値以上なら
       Logic1 = 1;//問題なし
     }else{
       Logic1 = 0;//以下なら問題あり
@@ -71,7 +72,7 @@ void loop(){
   if(IRin_2 == 1){
     MSin_2 = analogRead(MS2);
 
-    if(MSin_2 > 470){
+    if(MSin_2 > M){
       Logic2 = 1;
     }
     else{
@@ -90,7 +91,7 @@ void loop(){
   if(IRin_3 == 1){
     MSin_3 = analogRead(MS3);
 
-    if(MSin_3 > 480){
+    if(MSin_3 > M){
       Logic3 = 1;
     }
     else{
@@ -127,7 +128,8 @@ void loop(){
   }
    
 
-/*-----------------------------デバッグ用----------------------------------
+/*-----------------------------デバッグ用----------------------------------*/
+  /*
   Serial.print("IR1:");
   Serial.println(IRin_1);
 
@@ -136,6 +138,7 @@ void loop(){
 
   Serial.print("IR3:");
   Serial.println(IRin_3);
+  */
 
   Serial.print("MSin_1:");
   Serial.println(MSin_1);
@@ -146,6 +149,7 @@ void loop(){
   Serial.print("MSin_3:");
   Serial.println(MSin_3);
 
+  /*
   Serial.print("Logic1:");
   Serial.println(Logic1);
 
@@ -154,9 +158,9 @@ void loop(){
 
   Serial.print("Logic3:");
   Serial.println(Logic3);
-
-  Serial.println("--------------------------------");
   */
+  Serial.println("--------------------------------");
+  
 }
 
 
